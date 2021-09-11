@@ -4,11 +4,6 @@ on:
   pull_request:
     branches: [ develop, master ]
 
-env:
-  GITHUB_USER: ${{ secrets.USER }}
-  GITHUB_TOKEN: ${{ secrets.PACK_TOKEN }}
-  GITHUB_FEED: https://nuget.pkg.github.com/leo-oliveira-eng/
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -23,9 +18,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-
-    - name: Add GitHub Packages Source
-      run: dotnet nuget add source https://nuget.pkg.github.com/leo-oliveira-eng/index.json -n github -u ${{ env.GITHUB_USER }} -p ${{ env.GITHUB_TOKEN }}
 
     - name: dotnet restore
       run: dotnet restore
