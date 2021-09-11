@@ -5,8 +5,8 @@ on:
     branches: [ develop, master ]
 
 env:
-  GITHUB_USER: ${{ secrets.USER}}
-  GITHUB_TOKEN: ${{ secrets.PACK_TOKEN}}
+  GITHUB_USER: ${{ secrets.USER }}
+  GITHUB_TOKEN: ${{ secrets.PACK_TOKEN }}
   GITHUB_FEED: https://nuget.pkg.github.com/leo-oliveira-eng/
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
         dotnet-version: 5.0.x
 
     - name: Add GitHub Packages Source
-      run: dotnet nuget add source https://nuget.pkg.github.com/leo-oliveira-eng/index.json -n github -u ${{ env.GITHUB_USER }}  -p ${{ env.PACK_TOKEN }}
+      run: dotnet nuget add source https://nuget.pkg.github.com/leo-oliveira-eng/index.json -n github -u ${{ env.GITHUB_USER }} -p ${{ env.GITHUB_TOKEN }}
 
     - name: dotnet restore
       run: dotnet restore
