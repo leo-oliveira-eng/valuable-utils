@@ -20,9 +20,6 @@ env:
   GITHUB_TOKEN: ${{ secrets.PACK_TOKEN}}
   GITHUB_FEED: https://nuget.pkg.github.com/leo-oliveira-eng/
 
-  COVERLET_TOKEN: ${{ secrets.COVERLET_TOKEN }}
-  COVERLET_OUTPUT_PATH: Valuables.Utils.Tests/TestResults/coverage.info
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -36,7 +33,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x
+          dotnet-version: 3.1.x
 
       - name: 'Restore packages'
         run: dotnet restore
@@ -45,10 +42,7 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-      
-      - name: Report code coverage
-        uses: codecov/codecov-action@v1
+        run: dotnet test --no-build --verbosity normal --configuration Release
       
       - name: 'Pack'
         if: matrix.os == 'ubuntu-latest'
