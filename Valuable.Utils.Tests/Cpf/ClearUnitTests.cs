@@ -7,7 +7,7 @@ namespace Valuable.Utils.Tests.Cpf
     public class ClearUnitTests
     {
         [Fact]
-        public void CreateCPF_ValidParameters_ShouldReturnValidResponse()
+        public void ClearCPF_ValidParameters_ShouldReturnValidResponse()
         {
             var text = "696.249.670-24";
 
