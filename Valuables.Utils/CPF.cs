@@ -1,5 +1,5 @@
 ﻿using Messages.Core;
-using Messages.Core.Enums;
+using Messages.Core.Extensions;
 using System.Collections.Generic;
 using Valuables.Utils.Extensions;
 
@@ -87,7 +87,7 @@ namespace Valuables.Utils
             text = Clear(text);
 
             if (!IsValid(text))
-                return response.AddMessage(Message.Create(nameof(CPF), "CPF inválido.", MessageType.BusinessError));
+                return response.WithBusinessError(nameof(CPF), "CPF inválido.");
 
             return response.SetValue(new CPF(text));
         }
