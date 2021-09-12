@@ -7,7 +7,7 @@ namespace Valuable.Utils.Tests.Cpf
     public class IsValidUnitTests
     {
         [Fact]
-        public void CreateCPF_ValidParameters_ShouldReturnValidResponse()
+        public void ValidateCPF_ValidParameters_ShouldReturnValidResponse()
         {
             var text = "696.249.670-24";
 
@@ -25,7 +25,7 @@ namespace Valuable.Utils.Tests.Cpf
         [InlineData("any text")]
         [InlineData("036.688.790-00")]
         [InlineData("036.688.790-00.1234")]
-        public void CreateCPF_InvalidParameters_ShouldReturnValidResponseWithBusinessError(string text)
+        public void ValidateCPF_InvalidParameters_ShouldReturnValidResponseWithBusinessError(string text)
         {
             var response = CPF.IsValid(text);
 
